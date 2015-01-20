@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Traverses a tree-hierarchy and replaces all whitespace and
+# underscore characters with hyphens and converts all characters to lowercase.
+#
+
+# makes the for loop break on newline instead of whitespace
+IFS=$'\n'
+
+# makes sure the specified parameter is a directory
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]
+    || [ "$1" = "" ] || [ ! -d "$1" ]; then
+    echo "Usage: homogenise-folder [DIR]"
+    echo "Traverses the hierarchy of the specified directory and replaces"
+    echo "all whitespace and underscore characters with hyphens while also"
+    echo "converting all characters to lowercase."
+else
+    cd "$1"
+    for directory in *
+    do
+	if [ -d "$directory" ]; then
+	    ( homogenise-folder "$directory" )
+	fi;
+    done
+    rename 'y/ /-/' *
+    rename 'y/_/-/' *
+    rename 'y/A-Z/a-z/' *
+    rename 's/---/-/' *
+fi
