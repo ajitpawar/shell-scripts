@@ -1,5 +1,5 @@
 Shell Scripts
 ======================
-Collection of random scripts used in my day-to-day activities.<br>
-Uploaded here for sake of backup<br>
-You are free to use!
+Collection of some scripts I use day-to-day activities.<br>
+Updated on a rolling basis<br>
+No copyright. Free to use!
